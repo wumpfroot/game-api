@@ -46,18 +46,20 @@ Filter by minimum metascore
 
 #### Body
 
-`(JSON):`
+`JSON:`
 
-```{
+```
+{
     "title": "Awesome Game",
     "developer": "Amazing Devs",
     "metascore": 99
 }
 ```
 
-`(Form-encode):`
+`Form-encode:`
 
-```title: Awesome Game
+```
+title: Awesome Game
 developer: Amazing Devs,
 metascore: 99
 ```
