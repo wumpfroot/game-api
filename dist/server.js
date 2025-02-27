@@ -15,6 +15,9 @@ const app = (0, express_1.default)();
 // Body parser middleware
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
+app.get("/", (req, res) => {
+    res.send("<h1>Welcome to the Game API. Go to /api/games to see all the games.</h1>");
+});
 // reqLogger and resTime middleware
 app.use(reqLogger_1.default);
 app.use(resTime_1.default);

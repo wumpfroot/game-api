@@ -32,14 +32,17 @@ router.get("/:id", (req, res, next) => {
 });
 // POST new game (Does not get saved. Will need a database to store all the games)
 router.post("/", (req, res, next) => {
-    const { title, developer, metascore } = req.body;
+    const { title, developer, metascore, platforms, releaseDate, isEarlyAccess } = req.body;
     const newGame = {
         id: data_1.games.length + 1,
         title: title,
         developer: developer,
         metascore: metascore === "" ? NaN : metascore,
+        platforms: [platforms],
+        releaseDate: releaseDate,
+        isEarlyAccess: isEarlyAccess,
     };
-    if (![title, developer].every(Boolean) || isNaN(metascore)) {
+    if (![title, developer, platforms, releaseDate, isEarlyAccess].every(Boolean) || isNaN(metascore)) {
         const error = new Error(`Fill all the fields`);
         error.status = 400;
         return next(error);
@@ -56,7 +59,7 @@ router.put("/:id", (req, res, next) => {
         error.status = 404;
         return next(error);
     }
-    const { title, developer, metascore } = req.body;
+    const { title, developer, metascore, platforms, releaseDate, isEarlyAccess } = req.body;
     // If value is not in the body, do not update it. If it is, update it.
     if (title)
         game.title = title;
@@ -64,6 +67,12 @@ router.put("/:id", (req, res, next) => {
         game.developer = developer;
     if (metascore)
         game.metascore = metascore;
+    if (platforms)
+        game.platforms = platforms;
+    if (releaseDate)
+        game.releaseDate = releaseDate;
+    if (isEarlyAccess)
+        game.isEarlyAccess = isEarlyAccess;
     res.status(200).json(data_1.games);
 });
 // DELETE game by ID
