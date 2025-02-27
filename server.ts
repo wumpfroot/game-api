@@ -13,6 +13,10 @@ const app: Express = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.get("/", (req: Request, res: Response) => {
+	res.send("<h1>Welcome to the Game API. Go to /api/games to see all the games.</h1>");
+});
+
 // reqLogger and resTime middleware
 app.use(reqLogger);
 app.use(resTime);
