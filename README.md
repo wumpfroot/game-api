@@ -52,17 +52,12 @@ Filter by minimum metascore
 {
     "title": "Awesome Game",
     "developer": "Amazing Devs",
-    "metascore": 99
+    "metascore": 99,
+    "platforms": ["PS1", "Commodore 64"],
+    "isEarlyAccess": true
 }
 ```
 
-`Form-encode:`
-
-```
-title: Awesome Game
-developer: Amazing Devs,
-metascore: 99
-```
 
 ## Update (PUT) a game by ID
 
